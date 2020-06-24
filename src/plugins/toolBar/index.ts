@@ -101,6 +101,9 @@ export default class ToolBar extends Base {
     if (isString(toolBar)) {
       toolBarDOM = createDOM(toolBar)
     }
+
+    const className = this.get('className')
+    toolBarDOM.setAttribute('class', className || 'g6-component-toolbar')
     
     let container: HTMLDivElement | null = this.get('container');
     if (!container) {
@@ -156,8 +159,7 @@ export default class ToolBar extends Base {
 
     graph.on('stackchange', evt => {
       const { undoStack, redoStack } = evt
-      console.log(undoStack, redoStack)
-      debugger
+      
       const undoStackLen = undoStack.length
       const redoStackLen = redoStack.length
       // undo 不可用
